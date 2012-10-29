@@ -1,0 +1,16 @@
+section.title
+  header What is cooking today?
+nav
+  ul
+   li
+    a(href='/', class='active', title='home') home
+   li
+    a(href='/about', title='about me') about
+    if (req.isAuthenticated())
+      li
+        a(href="/users/"+req.user.id, title="Profile") Profile
+      li
+        a(href="/logout", title="logout") Logout
+    else
+      li
+        a(href="/login", title="Login") Login
