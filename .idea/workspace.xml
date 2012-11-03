@@ -2,27 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="64e00c0d-b0f0-4823-9ad1-d24acf6d0ebb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/photoshots.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/articles/home.jade" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/photoshots/form.jade" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/photoshots/photoshot.jade" />
-      <change type="DELETED" beforePath="C:\Projects\WICT\Source\WICTWeb\public\less\metroblog.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\WICT\Source\WICTWeb\public\less\metroblog.min.css" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/jsLinters/jslint.xml" afterPath="$PROJECT_DIR$/.idea/jsLinters/jslint.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/articles.js" afterPath="$PROJECT_DIR$/app/controllers/articles.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/article.js" afterPath="$PROJECT_DIR$/app/models/article.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/photoshot.js" afterPath="$PROJECT_DIR$/app/models/photoshot.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/articles/form.jade" afterPath="$PROJECT_DIR$/app/views/articles/form.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/articles/index.jade" afterPath="$PROJECT_DIR$/app/views/articles/index.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/articles/show.jade" afterPath="$PROJECT_DIR$/app/views/articles/show.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/passport.js" afterPath="$PROJECT_DIR$/config/passport.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.js" afterPath="$PROJECT_DIR$/config/routes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/less/metroblog.less" afterPath="$PROJECT_DIR$/public/less/metroblog.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/settings.js" afterPath="$PROJECT_DIR$/settings.js" />
     </list>
     <ignored path="WICTWeb.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -567,7 +547,11 @@
       <created>1351473167686</created>
       <updated>1351473167686</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Working code">
+      <created>1351979374374</created>
+      <updated>1351979374374</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -594,8 +578,8 @@
     <frame x="-9" y="-9" width="1938" height="1170" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32964823" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964823" sideWeight="0.49786553" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964823" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32964823" sideWeight="0.49786553" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964823" sideWeight="0.49786553" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25133404" sideWeight="0.4" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.67035174" order="3" side_tool="false" content_ui="tabs" />
