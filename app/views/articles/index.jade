@@ -1,13 +1,12 @@
 extends ../layouts/default
 
-block main
-  h1 Articles
-
 block content
   each article in articles
     .article
+    h1= article.category
+    h3
       a.title(href='/articles/'+article._id, title=article.title) #{article.title}
-      p=article.body
+    p=article.body
       .author
         span= formatDate(article.createdAt, "%b %d, %Y at %I:%M %p")
         span &nbsp;| Author :&nbsp;

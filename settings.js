@@ -6,14 +6,26 @@
 var express = require('express');
 var MongoStore = require('connect-mongodb');
 var path = require('path');
+var fs = require('fs');
 
-exports.boot = function (app, config, passport) {
-    bootApplication(app, config, passport);
+exports.loadModels = function() {
+// Bootstrap models
+  var models_path = __dirname + '/app/models';
+  var model_files = fs.readdirSync(models_path);
+  model_files.forEach(function (file) {
+    require(models_path + '/' + file);
+  });
 };
 
-// App settings and middleware
-function bootApplication(app, config, passport) {
+exports.cleanupLessFiles = function() {
+  var lessFile = __dirname + '/public/less/metroblog.css';
+  fs.unlink(lessFile, function onDelete(err) {
+    if (err) console.log("failed to delete file: %s", lessFile);
+    else console.log("%s file deleted", lessFile);
+  });
+};
 
+exports.initialize = function (app, config, passport) {
     app.set('showStackError', true);
     app.use(express.static(__dirname + '/public'));
     app.use(express.logger(':method :url :status')); // set views path, template engine and default layout
@@ -87,4 +99,4 @@ function bootApplication(app, config, passport) {
         });
     });
     app.set('showStackError', false);
-}
+};

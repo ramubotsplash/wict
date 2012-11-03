@@ -17,18 +17,16 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 mongoose.connect(config.db);
 
-// Bootstrap models
-var models_path = __dirname + '/app/models';
-var model_files = fs.readdirSync(models_path);
-model_files.forEach(function (file) {
-    require(models_path + '/' + file);
-});
+// load settings
+var settings = require('./settings');
+settings.cleanupLessFiles();
+settings.loadModels();
 
 // bootstrap passport config
-require('./config/passport').boot(passport, config);
+require('./config/passport').initialize(passport, config);
 
 var app = express();                                       // express app
-require('./settings').boot(app, config, passport);        // Bootstrap application settings
+settings.initialize(app, config, passport);        // Bootstrap application settings
 
 // Bootstrap routes
 require('./config/routes')(app, passport, auth);

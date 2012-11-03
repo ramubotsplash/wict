@@ -17,6 +17,11 @@ block content
       input(type="hidden", name="_method", value="PUT")
 
     .control-group
+        label.control-label(for='category') Category
+        .controls
+            input#title.input-xlarge(type='text', name="category", value=article.category, placeholder='Enter the category')
+
+    .control-group
       label.control-label(for='title') Title
       .controls
         input#title.input-xlarge(type='text', name="title", value=article.title, placeholder='Enter the title')

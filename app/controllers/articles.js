@@ -1,7 +1,8 @@
 
 var mongoose = require('mongoose')
   , Article = mongoose.model('Article')
-  , _ = require('underscore');
+  , _ = require('underscore')
+  , async = require('async');
 // New article
 exports.new = function (req, res) {
     res.render('articles/new', {
@@ -68,12 +69,12 @@ exports.destroy = function (req, res) {
 };
 // Listing of Articles
 exports.index = function (req, res) {
-    var perPage = 5
+    var perPage = 3
       , page = req.param('page') > 0 ? req.param('page') : 0;
     Article
     .find({})
     .populate('user', 'name')
-    .sort({ 'createdAt': -1 }) // sort by date
+    .sort({ 'category': 1 }) // sort by date
     .limit(perPage)
     .skip(perPage * page)
     .exec(function (err, articles) {
@@ -88,4 +89,43 @@ exports.index = function (req, res) {
         });
     });
 };
+// Listing of Articles
+exports.homeListing = function (req, res) {
+  var perPage = 3
+    , page = req.param('page') > 0 ? req.param('page') : 0;
+  Article
+    .distinct('category')
+    .sort({'category': -1})
+    .exec(function onQueryResult(err, categories) {
+      if (err) return res.render('500');
+      console.log('categories: %j', categories);
 
+      var categoryArticles = [];
+
+      var articlesByCategory = function(category, callback) {
+        console.log('category: ' + category);
+        Article
+          .find({'category': category})
+          .populate('user', 'name')
+          .sort({ 'createdAt': -1 }) // sort by date
+          .limit(perPage)
+          .exec(function (err, articles) {
+            if (err) return res.render('500');
+            console.log('category %s and articles: %d', category, articles.length);
+            categoryArticles.push({ 'category': category, 'articles': articles });
+            console.log('pushed');
+            callback();
+          });
+      };
+
+      async.forEach(categories, articlesByCategory, function(err) {
+        console.log('categories found: %d', categoryArticles.length);
+        res.render('articles/home', {
+          title: 'List of Articles'
+          , categoryArticles: categoryArticles
+          , page: page
+          , pages: 0
+        });
+      });
+    });
+};

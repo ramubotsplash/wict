@@ -1,0 +1,24 @@
+extends ../layouts/default
+
+block content
+  each category in categoryArticles
+    h1
+      a.tag(href="/category/"+category.category) #{category.category}
+    each article in category.articles
+      div.article
+        a.title(href='/articles/'+article._id, title=article.title)
+          img.left(src='http://placekitten.com/g/300/300', alt=article.title)
+        h3
+          a.title(href='/articles/'+article._id, title=article.title) #{article.title}
+        .author
+          span= formatDate(article.createdAt, "%b %d, %Y at %I:%M %p")
+          span &nbsp;|&nbsp;
+          a(href="/users/"+article.user._id)=article.user.name
+          | &nbsp;|&nbsp;
+          if (article.tags)
+            span.tags
+              span Tags :&nbsp;
+              each tag in article.tags.split(',')
+                a.tag(href="/tags/"+tag)
+                  i.icon-tags
+                  | #{tag}&nbsp;

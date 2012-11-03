@@ -19,10 +19,9 @@ var setTags = function (tags) {
 var PhotoshotSchema = new Schema({
     title: {type : String, default : '', trim : true}
     , body: {type : String, default : ''}
-    , shotoriginal: {type : String, default : ''}
-    , shotsmall: {type : String, default : ''}
-    , shotmedium: {type : String, default : ''}
-    , shotlarge: {type : String, default : ''}
+    , shotOriginal: {type : String, default : ''}
+    , shot300x300: {type : String, default : ''}
+    , shot600x600: {type : String, default : ''}
     , comments: [{type : Schema.ObjectId, ref : 'Comment'}]
     , tags: {type: [], get: getTags, set: setTags}
     , _user: {type : Schema.ObjectId, ref : 'User'}
