@@ -28,6 +28,13 @@ block content
 
   p
     br
+    h2 Photoshots
+    each photoshot in article.photoshots
+      include ../photoshots/photoshot
+    include ../photoshots/form
+
+  p
+    br
     h2 Comments
     each comment in article.comments
       include ../comments/comment
