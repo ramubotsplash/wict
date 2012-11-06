@@ -9,8 +9,8 @@ require('express-namespace');
 
 // Load configurations
 var env = process.env.NODE_ENV || 'development';
-var config = require('./config/config')[env];
-var auth = require('./authorization');
+var auth = require(process.env.WICT_APP_COV ? './app-cov/config/authorization' : './app/config/authorization');
+var config = require(process.env.WICT_APP_COV ? './app-cov/config/config' : './app/config/config')[env];
 
 // Bootstrap db connection
 var mongoose = require('mongoose');
@@ -18,20 +18,24 @@ var Schema = mongoose.Schema;
 mongoose.connect(config.db);
 
 // load settings
-var settings = require('./settings');
+var settings = require(process.env.WICT_APP_COV ? './app-cov/config/settings' : './app/config/settings');
 settings.cleanupLessFiles();
 settings.loadModels();
 
 // bootstrap passport config
-require('./config/passport').initialize(passport, config);
+var passportBoot = require(process.env.WICT_APP_COV ? './app-cov/config/passport' : './app/config/passport');
+passportBoot.initialize(passport, config);
 
 var app = express();                                       // express app
 settings.initialize(app, config, passport);        // Bootstrap application settings
 
 // Bootstrap routes
-require('./config/routes')(app, passport, auth);
+var routes = require(process.env.WICT_APP_COV ? './app-cov/config/routes' : './app/config/routes');
+routes(app, passport, auth);
 
 // Start the app by listening on <port>
 var port = process.env.PORT || 3001;
 app.listen(port);
 console.log('Express app started on port 1 ' + port);
+
+module.exports = app;

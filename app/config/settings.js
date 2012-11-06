@@ -10,7 +10,7 @@ var fs = require('fs');
 
 exports.loadModels = function() {
 // Bootstrap models
-  var models_path = __dirname + '/app/models';
+  var models_path = __dirname + '/../models';
   var model_files = fs.readdirSync(models_path);
   model_files.forEach(function (file) {
     require(models_path + '/' + file);
@@ -27,9 +27,9 @@ exports.cleanupLessFiles = function() {
 
 exports.initialize = function (app, config, passport) {
     app.set('showStackError', true);
-    app.use(express.static(__dirname + '/public'));
+    app.use(express.static(__dirname + '/../../public'));
     app.use(express.logger(':method :url :status')); // set views path, template engine and default layout
-    app.set('views', __dirname + '/app/views');
+    app.set('views', __dirname + '/../views');
     app.set('view engine', 'jade');
     app.configure(function () {
         // dynamic helpers
@@ -81,8 +81,8 @@ exports.initialize = function (app, config, passport) {
         app.use(app.router); // assume "not found" in the error msgs
 
         // use less        
-        app.use(require('less-middleware')({ src: __dirname + '/public' }));
-        app.use(express.static(path.join(__dirname, 'public')));
+        app.use(require('less-middleware')({ src: __dirname + '/../../public' }));
+        app.use(express.static(path.join(__dirname, '/../../public')));
 
         // is a 404. this is somewhat silly, but
         // valid, you can do whatever you like, set

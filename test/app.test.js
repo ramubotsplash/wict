@@ -1,21 +1,11 @@
-
-// Run $ expresso
-
-/**
- * Module dependencies.
- */
-
-var app = require('../app')
-  , assert = require('assert');
+var app = require('../app');
+var request = require('supertest');
 
 
-module.exports = {
-  'GET /': function(){
-    assert.response(app,
-      { url: '/' },
-      { status: 200, headers: { 'Content-Type': 'text/html; charset=utf-8' }},
-      function(res){
-        assert.includes(res.body, '<title>Express</title>');
-      });
-  }
-};
+describe('GET /', function(){
+  it('respond with json', function(done){
+    request(app)
+      .get('/')
+      .expect(200, done);
+  })
+})

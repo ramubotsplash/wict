@@ -6,7 +6,7 @@ var mongoose = require('mongoose')
 
 function registerUserRoutes(app, auth, passport) {
   // user routes
-  var users = require('../app/controllers/users');
+  var users = require('../controllers/users');
   app.get('/login', users.login);
   app.get('/signup', users.signup);
   app.get('/logout', users.logout);
@@ -34,7 +34,7 @@ function registerUserRoutes(app, auth, passport) {
 }
 
 function registerArticleRoutes(app, auth) {
-  var articles = require('../app/controllers/articles');
+  var articles = require('../controllers/articles');
   app.get('/articles', articles.index);
   app.get('/articles/new', auth.requiresLogin, articles.new);
   app.post('/articles', auth.requiresLogin, articles.create);
@@ -74,12 +74,12 @@ function registerArticleRoutes(app, auth) {
 }
 
 function registerCommentsRoutes(app, auth) {
-  var comments = require('../app/controllers/comments');
+  var comments = require('../controllers/comments');
   app.post('/articles/:id/comments', auth.requiresLogin, comments.create); // tag routes
 }
 
 function registerTagsRoutes(app) {
-  var tags = require('../app/controllers/tags');
+  var tags = require('../controllers/tags');
   app.get('/tags/:tag', tags.index);
 }
 
